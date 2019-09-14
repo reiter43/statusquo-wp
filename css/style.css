@@ -120,7 +120,8 @@ a.file {
       color: #E24325; }
   .head.white ul li a {
     color: #000; }
-    .head.white ul li a.active {
+    .head.white ul li a.active,
+	.head.white ul .current-menu-item>a	{
       border-bottom: 2px solid #E24325; }
   .head.fix {
     background: #151517;
@@ -181,7 +182,9 @@ a.file {
         -webkit-transition: border .2s, color .3s;
         -o-transition: border .2s, color .3s;
         transition: border .2s, color .3s; }
-        .head ul li a.active {
+        .head ul li a.active,
+		.head ul .current-menu-item>a
+		{
           border-bottom: 2px solid white; }
   .head-phone {
     float: right;

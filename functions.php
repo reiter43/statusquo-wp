@@ -47,21 +47,21 @@ add_action('after_setup_theme', 'statusquo_setup');
 
 
 // Регистрация нового типа записи (Услуги)
-function registerWorks()
+function registerServices()
 {
-	register_post_type('works', array(
+	register_post_type('services', array(
 		'labels'                 => array(
-			'name'               => 'Все работы', // Основное название типа записи
-			'singular_name'      => 'Работа', // отдельное название записи 
+			'name'               => 'Все услуги', // Основное название типа записи
+			'singular_name'      => 'Услуга', // отдельное название записи 
 			'add_new'            => 'Добавить новую',
-			'add_new_item'       => 'Добавить новую работу',
-			'edit_item'          => 'Редактировать работу',
-			'new_item'           => 'Новая работа',
-			'view_item'          => 'Посмотреть работу',
-			'search_items'       => 'Найти работу',
-			'not_found'          =>  'Работ не найдено',
+			'add_new_item'       => 'Добавить новую Услугу',
+			'edit_item'          => 'Редактировать Услугу',
+			'new_item'           => 'Новая Услуга',
+			'view_item'          => 'Посмотреть Услугу',
+			'search_items'       => 'Найти Услугу',
+			'not_found'          =>  'Услуг не найдено',
 			'parent_item_colon'  => '',
-			'menu_name'          => 'Работы'
+			'menu_name'          => 'Услуги'
 		),
 		'public'             => true,
 		'publicly_queryable' => true,
@@ -72,13 +72,13 @@ function registerWorks()
 		'capability_type'    => 'post',
 		'has_archive'        => true,
 		'hierarchical'       => false,		
-		'supports'           => array('title',  'thumbnail'),
+		'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
 		'taxonomies' 		 => array('category') // Добавляем возможность присваивать рубрики записи
 
 	));
 }
 
-add_action('init', 'registerWorks');
+add_action('init', 'registerServices');
 
 // Добавляем возможность вывода произвольных записей в рубрике наряду с дефолтными
 add_filter('pre_get_posts', 'query_post_type');
@@ -89,7 +89,7 @@ function query_post_type($query)
 		if ($post_type)
 			$post_type = $post_type;
 		else
-			$post_type = array('nav_menu_item', 'post', 'works');
+			$post_type = array('nav_menu_item', 'post', 'services');
 		$query->set('post_type', $post_type);
 		return $query;
 	}

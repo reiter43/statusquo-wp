@@ -32,31 +32,83 @@ get_header();
 			<div class="ctn-u">
 				<div>
 					<p>01</p>
-					<h4>Аудиторские <br>услуги</h4>
+					<h4>Аудиторские <br>услуги</h4>					
 					<ul>
-						<li><a href="#">Обязательный аудит</a></li>
-						<li><a href="#">Инициативный аудит</a></li>
-						<li><a href="#">Проверка отчетности</a></li>
+
+					<?php
+					global $post;
+					$args = array(
+						'post_type' => "services",
+						'publish'   => true,
+						'order'     => "ASC",
+						'category_name' => 'audit-services'
+
+					);
+					$myposts = get_posts($args);
+
+					foreach ($myposts as $post) {
+						setup_postdata($post);
+					?>
+						<li><a href="<?php the_permalink() ?>"><?php the_excerpt(); ?></a></li>
+					<?php
+					}
+					wp_reset_postdata();
+					?>
+
 					</ul>
 				</div>
 				<div>
 					<p>02</p>
 					<h4>Бухгалтерские <br>услуги</h4>
 					<ul>
-						<li><a href="#">Ведение учета</a></li>
-						<li><a href="#">Сопровождение</a></li>
-						<li><a href="#">Постановка учета</a></li>
-						<li><a href="#">Восстановление учета</a></li>
+						
+					<?php
+					global $post;
+					$args = array(
+						'post_type' => "services",
+						'publish'   => true,
+						'order'     => "ASC",
+						'category_name' => 'accounting-services'
+
+					);
+					$myposts = get_posts($args);
+
+					foreach ($myposts as $post) {
+						setup_postdata($post);
+					?>
+						<li><a href="<?php the_permalink() ?>"><?php the_excerpt(); ?></a></li>
+					<?php
+					}
+					wp_reset_postdata();
+					?>					
+
 					</ul>
 				</div>
 				<div>
 					<p>03</p>
 					<h4>Юридические <br>услуги</h4>
 					<ul>
-						<li><a href="#">Юридическая экспертиза</a></li>
-						<li><a href="#">Представительство в судах</a></li>
-						<li><a href="#">Юридическое обслуживание</a></li>
-						<li><a href="#">Регистрация и закрытие лиц</a></li>
+						
+					<?php
+					global $post;
+					$args = array(
+						'post_type' => "services",
+						'publish'   => true,
+						'order'     => "ASC",
+						'category_name' => 'legal-services'
+
+					);
+					$myposts = get_posts($args);
+
+					foreach ($myposts as $post) {
+						setup_postdata($post);
+					?>
+						<li><a href="<?php the_permalink() ?>"><?php the_excerpt(); ?></a></li>
+					<?php
+					}
+					wp_reset_postdata();
+					?>
+
 					</ul>
 				</div>
 			</div>

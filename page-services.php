@@ -6,93 +6,125 @@ get_header();
 ?>
 
 <section class="cont">
-		<div class="row">
-			<ul class="bread">
-				<li>
-					<a href="/">Главная</a>
-				</li>
-				<li>
-					<a href="/">услуги и стоимость</a>
-				</li>
-			</ul>
-			<h1>Услуги и стоимость</h1>
-			<div class="serv">
-				<div class="serv-item">
-					<div>
-						<span>01</span>
-						<h4>Аудиторские услуги</h4>
-						<p>ЗАО «Аудит-Статус Кво» является членом саморегулируемой организации аудиторов "Российский Союз аудиторов" (Ассоциация) (СРО РСА). Основной регистрационный номер записи №11703036622</p>
-						<a href="#" class="ref">подробнее об услуге</a>
-					</div>
-					<span>
-						<a href="#">
-							<h6>Обязательный аудит</h6>
-							<b>от 60 000</b>
-						</a>
-						<a href="#">
-							<h6>Инициативный аудит</h6>
-							<b>от 30 000</b>
-						</a>
-						<a href="#">
-							<h6>Обзорная аудиторская проверка бухгалтерской отчетности</h6>
-							<b>от 90 000</b>
-						</a>
-					</span>
+	<div class="row">
+		<ul class="bread">
+			<li>
+				<a href="/">Главная</a>
+			</li>
+			<li>
+				<a href="/">услуги и стоимость</a>
+			</li>
+		</ul>
+		<h1>Услуги и стоимость</h1>
+
+		<div class="serv">			
+
+			<div class="serv-item">
+				<div>
+					<span>01</span>
+					<h4><?php $category = get_category(4); echo $category->cat_name;  ?></h4>
+					<?php echo category_description(4); ?>
+					<a href="<?php echo get_category_link( 4 );  ?>" class="ref">подробнее об услуге</a>
 				</div>
-				<div class="serv-item">
-					<div>
-						<span>02</span>
-						<h4>Бухгалтерские услуги</h4>
-						<p>Комплекс бухгалтерских услуг разработан нашей компанией с целью освобождения заказчика по условиям договора от всех типов затрат, вызванных необходимостью общения с налоговыми органами и внебюджетными фондами</p>
-						<a href="#" class="ref">подробнее об услуге</a>
-					</div>
-					<span>
-						<a href="#">
-							<h6>Ведение бухгалтерского учета</h6>
-							<b>от 60 000</b>
+				<span>
+
+					<?php
+					global $post;
+					$args = array(
+						'post_type' => "services",
+						'publish'   => true,
+						'order'     => "ASC",
+						'category_name' => 'audit-services'
+
+					);
+					$myposts = get_posts($args);
+
+					foreach ($myposts as $post) {
+						setup_postdata($post);
+						?>
+						<a href="<?php the_permalink() ?>">
+							<h6><?php the_title(); ?></h6>
+							<b>от <?php the_field('price_service'); ?></b>
 						</a>
-						<a href="#">
-							<h6>Бухгалтерское сопровождение</h6>
-							<b>от 30 000</b>
-						</a>
-						<a href="#">
-							<h6>Постановка бухгалтерского учета</h6>
-							<b>от 90 000</b>
-						</a>
-						<a href="#">
-							<h6>Восстановление бухгалтерского учета</h6>
-							<b>от 30 000</b>
-						</a>
-					</span>
+					<?php
+					}
+					wp_reset_postdata();
+					?>
+					
+				</span>
+			</div>
+
+			<div class="serv-item">
+				<div>
+					<span>02</span>
+					<h4><?php $category = get_category(5); echo $category->cat_name;  ?></h4>
+					<?php echo category_description(5); ?>
+					<a href="<?php echo get_category_link(5);  ?>" class="ref">подробнее об услуге</a>
 				</div>
-				<div class="serv-item">
-					<div>
-						<span>03</span>
-						<h4>Юридические услуги</h4>
-						<p>Полный комплекс услуг по правовому сопровождению юридических лиц. Правовая поддержка физических лиц по вопросам трудового, жилищного, наследственного и семейного права, а также по сделкам с недвижимостью</p>
-						<a href="#" class="ref">подробнее об услуге</a>
-					</div>
-					<span>
-						<a href="#">
-							<h6>Экспертиза юридических документов, договоров и сделок</h6>
-							<b>от 60 000</b>
+				<span>
+
+					<?php
+					global $post;
+					$args = array(
+						'post_type' => "services",
+						'publish'   => true,
+						'order'     => "ASC",
+						'category_name' => 'accounting-services'
+
+					);
+					$myposts = get_posts($args);
+
+					foreach ($myposts as $post) {
+						setup_postdata($post);
+						?>
+						<a href="<?php the_permalink() ?>">
+							<h6><?php the_title(); ?></h6>
+							<b>от <?php the_field('price_service'); ?></b>
 						</a>
-						<a href="#">
-							<h6>Представительство в судах и государственных органах</h6>
-							<b>от 30 000</b>
-						</a>
-						<a href="#">
-							<h6>Консультационное обслуживание по вопросам права</h6>
-							<b>от 30 000</b>
-						</a>
-						<a href="#">
-							<h6>Регистрация и закрытие юридических лиц</h6>
-							<b>от 30 000</b>
-						</a>
-					</span>
+					<?php
+					}
+					wp_reset_postdata();
+					?>
+					
+				</span>
+			</div>
+
+			<div class="serv-item">
+				<div>
+					<span>03</span>
+					<h4><?php $category = get_category(6); echo $category->cat_name;  ?></h4>
+					<?php echo category_description(6); ?>
+					<a href="<?php echo get_category_link(6);  ?>" class="ref">подробнее об услуге</a>
 				</div>
+				<span>
+
+					<?php
+					global $post;
+					$args = array(
+						'post_type' => "services",
+						'publish'   => true,
+						'order'     => "ASC",
+						'category_name' => 'legal-services'
+
+					);
+					$myposts = get_posts($args);
+
+					foreach ($myposts as $post) {
+						setup_postdata($post);
+						?>
+						<a href="<?php the_permalink() ?>">
+							<h6><?php the_title(); ?></h6>
+							<b>от <?php the_field('price_service'); ?></b>
+						</a>
+					<?php
+					}
+					wp_reset_postdata();
+					?>
+					
+				</span>
 			</div>
 		</div>
-	</section>
-	
-<?php get_footer(  ); ?>
+	</div>
+</section>
+
+<?php get_footer(); ?>

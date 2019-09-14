@@ -8,19 +8,20 @@
 			<div class="foot-pn">
 				<a href="<?php echo home_url(); ?>" class="foot-logo"></a>
 				<p>ЗАО «Аудит-Статус Кво» является членом саморегулируемой организации аудиторов "Российский Союз аудиторов" (Ассоциация) (СРО РСА). Основной регистрационный номер записи №11703036622</p>
-				<a href="#">Подробнее о компании</a>
+				<a href="<?php echo get_page_link(15); ?>" >Подробнее о компании</a>
 			</div>
 			<div class="foot-nav">
 				<h4>Навигация</h4>
-				<ul>
-					<li><a href="#">Главная</a></li>
-					<li><a href="#">Услуги и стоимость</a></li>
-					<li><a href="#">Компания</a></li>
-					<li><a href="#">Вопрос-ответ</a></li>
-					<li><a href="#">Отзывы</a></li>
-					<li><a href="#">Статьи</a></li>
-					<li><a href="#">Контакты</a></li>
-				</ul>
+
+				<?php
+				wp_nav_menu([
+					'theme_location'  => 'down',
+					'container'       => 'false',					
+					'menu_class'      => '',
+					'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
+				]);
+				?>
+
 			</div>
 			<div class="foot-info">
 				<h4>Контакты</h4>
