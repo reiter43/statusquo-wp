@@ -1,0 +1,82 @@
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5,
+h6, p, blockquote, pre,a, abbr, acronym, address, big,
+cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small,
+strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt,
+dd, ol, ul, li,fieldset, form, label, legend,table, caption,
+tbody, tfoot, thead, tr, th, td,article, aside, canvas, details,
+embed, figure, figcaption, footer, header, hgroup, menu, nav,
+output, ruby, section, summary,time, mark, audio, video
+	margin: 0
+	padding: 0
+	border: 0
+	vertical-align: baseline
+html
+	-ms-text-size-adjust: 100%
+	-webkit-text-size-adjust: 100%
+img,fieldset, a img
+	border: none
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea
+	-webkit-appearance: none
+input[type="submit"],
+button
+	cursor: pointer
+	&::-moz-focus-inner
+		padding: 0
+		border: 0
+textarea
+	overflow: auto
+input, button
+	margin: 0
+	padding: 0
+	border: 0
+a
+	text-decoration: none
+div, input, textarea, select,button,
+h1,h2,h3,h4,h5,h6,a,span,a:focus
+	outline: none
+	-webkit-tap-highlight-color: transparent
+ul,ol
+	list-style-type: none
+table
+	border-spacing: 0
+	border-collapse: collapse
+html
+	box-sizing: border-box
+*, *:before, *:after
+	box-sizing: inherit
+input, textarea
+	&::-webkit-input-placeholder
+		opacity: 1
+		transition: opacity 0.2s ease
+	&::-moz-placeholder
+		opacity: 1
+		transition: opacity 0.2s ease
+	&:-moz-placeholder
+		opacity: 1
+		transition: opacity 0.2s ease
+	&:-ms-input-placeholder
+		opacity: 1
+		transition: opacity 0.2s ease
+	&:focus::-webkit-input-placeholder
+		opacity: 0
+		transition: opacity 0.2s ease
+	&:focus::-moz-placeholder
+		opacity: 0
+		transition: opacity 0.2s ease
+	&:focus:-moz-placeholder
+		opacity: 0
+		transition: opacity 0.2s ease
+	&:focus:-ms-input-placeholder
+		opacity: 0
+		transition: opacity 0.2s ease
+
+@media (prefers-reduced-motion: reduce)
+	*
+		transition: none !important
+
+@media screen and (max-width: 767px)
+	*
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
