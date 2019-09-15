@@ -148,7 +148,7 @@ add_filter('document_title_separator', function ()
 
 
 // Убираем теги р при выводе the_content и the_excerpt
-remove_filter('the_content', 'wpautop');
+// remove_filter('the_content', 'wpautop');
 remove_filter('the_excerpt', 'wpautop');
 //-------------------------------------------------------------------------------------------------------------
 
@@ -172,6 +172,32 @@ function my_navigation_template($template, $class)
 	';
 }
 //-------------------------------------------------------------------------------------------------------------
+
+
+// Создание шаблона записи определенной категории
+add_filter('single_template', create_function(
+	'$the_template',
+	'foreach( (array) get_the_category() as $cat ) {
+		if ( file_exists(TEMPLATEPATH . "/single-{$cat->slug}.php") )
+			return TEMPLATEPATH . "/single-{$cat->slug}.php"; }
+		return $the_template;' )
+);
+//-----------------------------------------------------------------------------------------------------
+
+
+// Создание своего размера картинки
+add_image_size( 'true-fullwd', 806, 400 );
+ 
+add_filter('image_size_names_choose', 'true_new_image_sizes');
+ 
+function true_new_image_sizes($sizes) {
+	$addsizes = array(
+		"true-fullwd" => 'Кастом'
+	);
+	$newsizes = array_merge($sizes, $addsizes);
+	return $newsizes;
+}
+
 
 
 

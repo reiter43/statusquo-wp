@@ -23,7 +23,7 @@
 </head>
 
 <body>
-	<?php if (is_page(8) || is_page(17) || is_page(23)) { ?>
+	<?php if (is_page(8) || is_page(17) || is_page(23) || is_single()) { ?>
 		<header class="head white">
 			<div class="head-humb"><span></span></div>
 			<a href="<?php echo home_url(); ?>" class="head-logo"></a>
