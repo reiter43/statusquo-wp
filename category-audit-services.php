@@ -5,13 +5,13 @@ get_header();
 <section class="hat" style="background-image: url(<?php echo S_IMG_DIR ?>/hat4.png);">
 		<ul class="bread">
 			<li>
-				<a href="/">Главная</a>
+				<a href="<?php echo home_url(); ?>">Главная</a>
 			</li>
 			<li>
-				<a href="/">услуги и стоимость</a>
+				<a href="<?php echo get_page_link(8); ?>">услуги и стоимость</a>
 			</li>
 			<li>
-				<a href="/">Аудиторские услуги</a>
+				<a >Аудиторские услуги</a>
 			</li>
 		</ul>
 		<h1><?php single_cat_title();  ?></h1>

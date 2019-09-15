@@ -89,11 +89,47 @@ function query_post_type($query)
 		if ($post_type)
 			$post_type = $post_type;
 		else
-			$post_type = array('nav_menu_item', 'post', 'services');
+			$post_type = array('nav_menu_item', 'post', 'services', 'articles');
 		$query->set('post_type', $post_type);
 		return $query;
 	}
 }
+//-------------------------------------------------------------------------------------------------------------
+
+// Регистрация нового типа записи (Статьи)
+function registerArticles()
+{
+	register_post_type('articles', array(
+		'labels'                 => array(
+			'name'               => 'Все статьи', // Основное название типа записи
+			'singular_name'      => 'Статья', // отдельное название записи 
+			'add_new'            => 'Добавить новую',
+			'add_new_item'       => 'Добавить новую Статью',
+			'edit_item'          => 'Редактировать Статью',
+			'new_item'           => 'Новая Статья',
+			'view_item'          => 'Посмотреть Статью',
+			'search_items'       => 'Найти Статью',
+			'not_found'          =>  'Статей не найдено',
+			'parent_item_colon'  => '',
+			'menu_name'          => 'Статьи'
+		),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => true,
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,		
+		'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'taxonomies' 		 => array('category') // Добавляем возможность присваивать рубрики записи
+	));
+}
+
+add_action('init', 'registerArticles');
+
+
 //-------------------------------------------------------------------------------------------------------------
 
 
@@ -192,11 +228,26 @@ add_filter('image_size_names_choose', 'true_new_image_sizes');
  
 function true_new_image_sizes($sizes) {
 	$addsizes = array(
-		"true-fullwd" => 'Кастом'
+		"true-fullwd" => 'Для страницы с отдельной услугой'
 	);
 	$newsizes = array_merge($sizes, $addsizes);
 	return $newsizes;
 }
+//-----------------------------------------------------------------------------------------------------
+
+
+// Запрет на удаление тегов span визуальным редакторм
+function wph_add_all_elements($init) {
+    if(current_user_can('unfiltered_html')) {
+        $init['extended_valid_elements'] = 'span[*],div[*]';
+    }
+    return $init;
+}
+add_filter('tiny_mce_before_init', 'wph_add_all_elements', 20);
+//-----------------------------------------------------------------------------------------------------
+
+
+
 
 
 

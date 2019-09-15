@@ -6,16 +6,16 @@ get_header();
     <div class="row">
         <ul class="bread">
             <li>
-                <a href="/">Главная</a>
+                <a href="<?php echo home_url(); ?>">Главная</a>
             </li>
             <li>
-                <a href="/">услуги и стоимость</a>
+                <a href="<?php echo get_page_link(8); ?>">услуги и стоимость</a>
             </li>
             <li>
-                <a href="/">Аудиторские услуги</a>
+                <a href="<?php echo get_category_link(4); ?>">Аудиторские услуги</a>
             </li>
             <li>
-                <a href="/">Обзорная аудиторская проверка бухгалтерской отчетности</a>
+            <a >Обзорная аудиторская проверка бухгалтерской отчетности</a>
             </li>
         </ul>
         <div class="page">
