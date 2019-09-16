@@ -89,7 +89,7 @@ function query_post_type($query)
 		if ($post_type)
 			$post_type = $post_type;
 		else
-			$post_type = array('nav_menu_item', 'post', 'services', 'articles');
+			$post_type = array('nav_menu_item', 'post', 'services', 'articles', 'faq');
 		$query->set('post_type', $post_type);
 		return $query;
 	}
@@ -128,6 +128,42 @@ function registerArticles()
 }
 
 add_action('init', 'registerArticles');
+
+
+//-------------------------------------------------------------------------------------------------------------
+
+// Регистрация нового типа записи (Вопросы)
+function registerFaq()
+{
+	register_post_type('faq', array(
+		'labels'                 => array(
+			'name'               => 'Все вопросы', // Основное название типа записи
+			'singular_name'      => 'Вопрос', // отдельное название записи 
+			'add_new'            => 'Добавить новый',
+			'add_new_item'       => 'Добавить новый Вопрос',
+			'edit_item'          => 'Редактировать Вопрос',
+			'new_item'           => 'Новый Вопрос',
+			'view_item'          => 'Посмотреть Вопрос',
+			'search_items'       => 'Найти Вопросы',
+			'not_found'          =>  'Вопросов не найдено',
+			'parent_item_colon'  => '',
+			'menu_name'          => 'Вопросы'
+		),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => true,
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,		
+		'supports'           => array('title'),
+        'taxonomies' 		 => array('category') // Добавляем возможность присваивать рубрики записи
+	));
+}
+
+add_action('init', 'registerFaq');
 
 
 //-------------------------------------------------------------------------------------------------------------
@@ -223,12 +259,14 @@ add_filter('single_template', create_function(
 
 // Создание своего размера картинки
 add_image_size( 'true-fullwd', 806, 400 );
+add_image_size( 'true-fullwd1', 889, 372 );
  
 add_filter('image_size_names_choose', 'true_new_image_sizes');
  
 function true_new_image_sizes($sizes) {
 	$addsizes = array(
-		"true-fullwd" => 'Для страницы с отдельной услугой'
+		"true-fullwd" => 'Для страницы с отдельной услугой',
+		"true-fullwd1" => 'Для страницы с отдельной статьей'
 	);
 	$newsizes = array_merge($sizes, $addsizes);
 	return $newsizes;
