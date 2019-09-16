@@ -24,11 +24,16 @@
 
 			</div>
 			<div class="foot-info">
-				<h4>Контакты</h4>
-				<p>Офис в Москве: <br>Москва, пр. Волгоградский 32 - 8</p>
-				<p>Режим работы: <br>По будням, с 10:00 до 18:00</p>
-				<p>Номер телефона: <br>8 495 150-27-37</p>
-				<p>По вопросам и предложениям: <br>auditstatuskvo@gmail.com</p>
+				<?php
+					$post = get_post(191);
+					setup_postdata($post); 
+				?>
+					<h4>Контакты</h4>
+					<p>Офис в Москве: <br><?php the_field('adres');?>8</p>
+					<p>Режим работы: <br><?php the_field('mode');?></p>
+					<p>Номер телефона: <br><?php the_field('phone');?></p>
+					<p>По вопросам и предложениям: <br><?php the_field('email');?></p>
+				<?php wp_reset_postdata(); ?>
 			</div>
 			<div class="foot-sub">
 				<h4>Подписка</h4>

@@ -38,8 +38,13 @@
 			?>
 
 			<div class="head-phone">
-				<a href="tel:84951502737">8 495 150 27 37</a>
-				<a href="modal-call.php" class="open-modal">Заказать обратный звонок</a>
+				<?php
+					$post = get_post(191);
+					setup_postdata($post); 
+				?>
+				<a href="tel:<?php the_field('phone');?>"><?php the_field('phone');?></a>
+				<a href="http://statusquo/wp-content/themes/statusquo/modal/modal-call.php" class="open-modal">Заказать обратный звонок</a>
+				<?php wp_reset_postdata(); ?>
 			</div>
 		</header>
 	<?php
@@ -59,8 +64,13 @@
 			?>
 
 			<div class="head-phone">
-				<a href="tel:84951502737">8 495 150 27 37</a>
-				<a href="modal-call.php" class="open-modal">Заказать обратный звонок</a>
+			<?php
+				$post = get_post(191);
+				setup_postdata($post); 
+			?>
+				<a href="tel:<?php the_field('phone');?>"><?php the_field('phone');?></a>
+				<a href="http://statusquo/wp-content/themes/statusquo/modal/modal-call.php" class="open-modal">Заказать обратный звонок</a>
+			<?php wp_reset_postdata(); ?>
 			</div>
 		</header>
 	<?php

@@ -31,7 +31,7 @@ get_header();
                         <?php the_field('list_service'); ?>
                         <p>Стоимость услуги</p>
                         <b>от <?php the_field('price_single-service'); ?></b>
-                        <a href="modal-order.php" class="link open-modal">заказать услугу</a>
+                        <a href="http://statusquo/wp-content/themes/statusquo/modal/modal-order.php" class="link open-modal">заказать услугу</a>
                     </div>
                 </div>
                 <?php the_content( ); ?>

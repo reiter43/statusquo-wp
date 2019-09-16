@@ -167,6 +167,40 @@ add_action('init', 'registerFaq');
 
 
 //-------------------------------------------------------------------------------------------------------------
+// Регистрация нового типа записи (Вопросы)
+function registerReviews()
+{
+	register_post_type('reviews', array(
+		'labels'                 => array(
+			'name'               => 'Все отзывы', // Основное название типа записи
+			'singular_name'      => 'Отзыв', // отдельное название записи 
+			'add_new'            => 'Добавить новый',
+			'add_new_item'       => 'Добавить новый Отзыв',
+			'edit_item'          => 'Редактировать Отзыв',
+			'new_item'           => 'Новый Отзыв',
+			'view_item'          => 'Посмотреть Отзыв',
+			'search_items'       => 'Найти Отзывы',
+			'not_found'          =>  'Отзывов не найдено',
+			'parent_item_colon'  => '',
+			'menu_name'          => 'Отзывы'
+		),
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => true,
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,		
+		'supports'           => array('title', 'editor')        
+	));
+}
+
+add_action('init', 'registerReviews');
+
+
+//-------------------------------------------------------------------------------------------------------------
 
 
 //Поддержка SVG
