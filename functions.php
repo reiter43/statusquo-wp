@@ -308,7 +308,7 @@ function true_new_image_sizes($sizes) {
 //-----------------------------------------------------------------------------------------------------
 
 
-// Запрет на удаление тегов span визуальным редакторм
+// Запрет на удаление тегов span визуальным редактором
 function wph_add_all_elements($init) {
     if(current_user_can('unfiltered_html')) {
         $init['extended_valid_elements'] = 'span[*],div[*]';
@@ -319,6 +319,16 @@ add_filter('tiny_mce_before_init', 'wph_add_all_elements', 20);
 //-----------------------------------------------------------------------------------------------------
 
 
+// Запрет на создание копий картинок 
+add_filter( 'intermediate_image_sizes', 'delete_intermediate_image_sizes' );
+function delete_intermediate_image_sizes( $sizes ){
+	// размеры которые нужно удалить
+	return array_diff( $sizes, array(
+		'medium_large',
+		'large',
+	) );
+}
+//-----------------------------------------------------------------------------------------------------
 
 
 

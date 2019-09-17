@@ -17,7 +17,10 @@ get_header();
     </section>
     <section class="cont">
         <div class="row">
-            <?php the_content(); ?>
+            <div class="com">
+                <?php the_content(); ?>
+            </div>
+            
         </div>
     </section>
     <section class="post">

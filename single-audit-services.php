@@ -15,7 +15,12 @@ get_header();
                 <a href="<?php echo get_category_link(4); ?>">Аудиторские услуги</a>
             </li>
             <li>
-            <a >Обзорная аудиторская проверка бухгалтерской отчетности</a>
+            <?php
+                $post = get_post();
+                setup_postdata($post); 
+			?>
+            <a ><?php the_title(); ?></a>
+            <?php wp_reset_postdata(); ?>
             </li>
         </ul>
         <div class="page">
