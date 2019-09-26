@@ -1,7 +1,8 @@
 <?php
 /**
- * The template for displaying the footer 
+ * Шаблон подвала
  */
+
 ?>
 	<footer class="foot">
 		<div class="row">
@@ -12,28 +13,21 @@
 			</div>
 			<div class="foot-nav">
 				<h4>Навигация</h4>
-
 				<?php
-				wp_nav_menu([
-					'theme_location'  => 'down',
-					'container'       => 'false',					
-					'menu_class'      => '',
-					'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
-				]);
+					wp_nav_menu([
+						'theme_location'  => 'down',
+						'container'       => 'false',					
+						'menu_class'      => '',
+						'items_wrap'      => '<ul class="%2$s">%3$s</ul>',
+					]);
 				?>
-
 			</div>
-			<div class="foot-info">
-				<?php
-					$post = get_post(191);
-					setup_postdata($post); 
-				?>
-					<h4>Контакты</h4>
-					<p>Офис в Москве: <br><?php the_field('adres');?>8</p>
-					<p>Режим работы: <br><?php the_field('mode');?></p>
-					<p>Номер телефона: <br><?php the_field('phone');?></p>
-					<p>По вопросам и предложениям: <br><?php the_field('email');?></p>
-				<?php wp_reset_postdata(); ?>
+			<div class="foot-info">				
+				<h4>Контакты</h4>
+				<p>Офис в Москве: <br><?php the_field('adres', 191);?></p>
+				<p>Режим работы: <br><?php the_field('mode', 191);?></p>
+				<p>Номер телефона: <br><?php the_field('phone', 191);?></p>
+				<p>По вопросам и предложениям: <br><?php the_field('email', 191);?></p>				
 			</div>
 			<div class="foot-sub">
 				<h4>Подписка</h4>

@@ -5,15 +5,8 @@ Template Name: Отзывы
 get_header();
 ?>
 <section class="hat" style="background-image: url(<?php echo S_IMG_DIR ?>/hat2.png);">
-		<span style="background-image: url(<?php echo S_IMG_DIR ?>/hat2m.png);"></span>
-		<ul class="bread">
-			<li>
-				<a href="<?php echo home_url(); ?>">Главная</a>
-			</li>
-			<li>
-				<a >Отзывы</a>
-			</li>
-		</ul>
+		<span style="background-image: url(<?php echo S_IMG_DIR ?>/hat2m.png);"></span>	
+		<?php get_template_part('template-parts/content', 'bread'); ?>
 		<h1>Отзывы клиентов</h1>
 	</section>
 	<section class="cont">
@@ -68,18 +61,15 @@ get_header();
 				</div>
 			</div>
 			<div class="rev">
-				<h4>Отзывы клиентов</h4>		
-
+				<h4>Отзывы клиентов</h4>
 				<div class="rev-quo">
-
-
 				<?php
 					global $post;
 					$args = array(
 						'post_type' => "reviews",
 						'numberposts' => -1,
 						'publish'   => true,
-						'order'     => "ASC",
+						'order'     => "ASC"
 					);
 					$myposts = get_posts($args);
 
@@ -87,38 +77,26 @@ get_header();
 						setup_postdata($post);
 						?>
 						<div>
-						<h6><?php the_title( ); ?></h6>
-						<?php the_content( ); ?>
+						<h6><?php the_title(); ?></h6>
+						<?php the_content(); ?>
 						<span>
-							<i style="background-image: url(<?php the_field('fhoto_reviews') ?>);"></i>
-							<b><?php the_field('fio_reviews') ?></b>
-							<p><?php the_field('prof_reviews') ?></p>
+							<i style="background-image: url(<?php the_field('fhoto_reviews'); ?>);"></i>
+							<b><?php the_field('fio_reviews'); ?></b>
+							<p><?php the_field('prof_reviews'); ?></p>
 						</span>
 					</div>
 					<?php
 					}
 					wp_reset_postdata();
-					?>					
-					
+				?>					
 				</div>
 			</div>
 		</div>
 	</section>
 	<section class="cst">
 		<div class="row">
-			<h3>Заполните форму и получите бесплатную консультацию</h3>
-			<form action="">
-				<label class="text">
-					<input type="text" name="name" placeholder="Имя и фамилия" autocomplete="off" required>
-					<span style="background-image: url(<?php echo S_IMG_DIR ?>/name.svg);"></span>
-				</label>
-				<label class="text">
-					<input type="text" name="phone" placeholder="Номер телефона" autocomplete="off" required>
-					<span style="background-image: url(<?php echo S_IMG_DIR ?>/phone.svg);"></span>
-				</label>
-				<button class="link">отправить заявку</button>
-			</form>
+			<?php get_template_part('template-parts/content', 'form_cons2'); ?>	
 		</div>
     </section>
     
-<?php get_footer(  ); ?>
+<?php get_footer(); ?>

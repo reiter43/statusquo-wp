@@ -11,106 +11,15 @@ get_header();
 			<p>Сократите расходы на 40% с помощью бухгалтерского аутсорсинга</p>
 			<a href="#" class="link">расчитать экономию</a>
 		</div>
-		<div class="cap-r">
-			<a href="#">
-				<p>01</p>
-				<h4>Аудиторские <br>услуги</h4>
-			</a>
-			<a href="#">
-				<p>02</p>
-				<h4>Бухгалтерские <br>услуги</h4>
-			</a>
-			<a href="#">
-				<p>03</p>
-				<h4>Юридические <br>услуги</h4>
-			</a>
+		<div class="cap-r">		
+			<?php filter_categories(); ?>			
 		</div>
 		<p>Если у вас возникли вопросы или вы хотели бы обсудить предложение, обратитесь по электронной почте info@auditsk.ru к нашим специалистам.</p>
 	</section>
 	<section class="ctn">
 		<div class="row">
 			<div class="ctn-u">
-				<div>
-					<p>01</p>
-					<h4>Аудиторские <br>услуги</h4>					
-					<ul>
-
-					<?php
-					global $post;
-					$args = array(
-						'post_type' => "services",
-						'publish'   => true,
-						'order'     => "ASC",
-						'category_name' => 'audit-services'
-
-					);
-					$myposts = get_posts($args);
-
-					foreach ($myposts as $post) {
-						setup_postdata($post);
-					?>
-						<li><a href="<?php the_permalink() ?>"><?php the_excerpt(); ?></a></li>
-					<?php
-					}
-					wp_reset_postdata();
-					?>
-
-					</ul>
-				</div>
-				<div>
-					<p>02</p>
-					<h4>Бухгалтерские <br>услуги</h4>
-					<ul>
-						
-					<?php
-					global $post;
-					$args = array(
-						'post_type' => "services",
-						'publish'   => true,
-						'order'     => "ASC",
-						'category_name' => 'accounting-services'
-
-					);
-					$myposts = get_posts($args);
-
-					foreach ($myposts as $post) {
-						setup_postdata($post);
-					?>
-						<li><a href="<?php the_permalink() ?>"><?php the_excerpt(); ?></a></li>
-					<?php
-					}
-					wp_reset_postdata();
-					?>					
-
-					</ul>
-				</div>
-				<div>
-					<p>03</p>
-					<h4>Юридические <br>услуги</h4>
-					<ul>
-						
-					<?php
-					global $post;
-					$args = array(
-						'post_type' => "services",
-						'publish'   => true,
-						'order'     => "ASC",
-						'category_name' => 'legal-services'
-
-					);
-					$myposts = get_posts($args);
-
-					foreach ($myposts as $post) {
-						setup_postdata($post);
-					?>
-						<li><a href="<?php the_permalink() ?>"><?php the_excerpt(); ?></a></li>
-					<?php
-					}
-					wp_reset_postdata();
-					?>
-
-					</ul>
-				</div>
+				<?php home_out_listservice(); ?>				
 			</div>
 			<div class="ctn-q">
 				<p>Компания более 20 лет на рынке, мы заслужили доверие сотен клиентов благодаря колоссальному опытому специалистов и эффективному подходу.</p>
@@ -154,18 +63,7 @@ get_header();
 	</section>
 	<section class="cst">
 		<div class="row">
-			<h3>Заполните форму и получите бесплатную консультацию</h3>
-			<form action="">
-				<label class="text">
-					<input type="text" name="name" placeholder="Имя и фамилия" autocomplete="off" required>
-					<span style="background-image: url(<?php echo S_IMG_DIR ?>/name.svg);"></span>
-				</label>
-				<label class="text">
-					<input type="text" name="phone" placeholder="Номер телефона" autocomplete="off" required>
-					<span style="background-image: url(<?php echo S_IMG_DIR ?>/phone.svg);"></span>
-				</label>
-				<button class="link">отправить заявку</button>
-			</form>
+			<?php get_template_part('template-parts/content', 'form_cons2'); ?>	
 		</div>
 	</section>
 	<section class="hit">
@@ -206,25 +104,7 @@ get_header();
 	</section>
 	<section class="dep">
 		<div class="row">
-			<h2>Бесплатная консультация</h2>
-			<p>Для всех новых клиентов наши специалисты проводят бесплатную консультацию по вопросам бухгалтерии, аудита и правового сопровождния</p>
-			<form action="">
-				<label class="text">
-					<input type="text" name="name" placeholder="Имя и фамилия" autocomplete="off" required>
-					<span style="background-image: url(<?php echo S_IMG_DIR ?>/name.svg);"></span>
-				</label>
-				<label class="text">
-					<input type="text" name="phone" placeholder="Номер телефона" autocomplete="off" required>
-					<span style="background-image: url(<?php echo S_IMG_DIR ?>/phone.svg);"></span>
-				</label>
-				<label class="text">
-					<input type="text" name="mail" placeholder="Электронная почта" autocomplete="off" required>
-					<span style="background-image: url(<?php echo S_IMG_DIR ?>/mail.svg);"></span>
-				</label>
-				<textarea name="text" placeholder="Опишите деятельность вашей компании...."></textarea>
-				<button class="link">Получить консультацию</button>
-				<span>Бесплатная консультация длится 15 минут, вопросы рекомендуем подготовить заранее.</span>
-			</form>
+			<?php get_template_part('template-parts/content', 'form_cons1'); ?>			
 		</div>
 	</section>
 
